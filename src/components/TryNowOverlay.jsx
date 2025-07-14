@@ -5,42 +5,45 @@ const TryNowOverlay = ({ onClose, onItemSelect }) => {
     {
       id: 1,
       name: 'Classic Wayfarer Sunglasses',
-      image: 'https://images.pexels.com/photos/701877/pexels-photo-701877.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: '/src/assets/raybans.jpg',
       price: '$89.99',
+      tryNowImage: '/src/assets/sunglasses.png',
       type: 'sunglasses'
     },
     {
       id: 2,
       name: 'Vintage Round Glasses',
-      image: 'https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://images.pexels.com/photos/701877/pexels-photo-701877.jpeg?auto=compress&cs=tinysrgb&w=400',
       price: '$69.99',
-      type: 'glasses'
+      tryNowImage: '/src/assets/roundglasses.png',
+      type: 'sunglasses'
     }
   ]
   const similarItems = [
     {
       id: 1,
       name: 'Aviator Sunglasses',
-      image: 'https://images.pexels.com/photos/701877/pexels-photo-701877.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&w=400',
       price: '$189.99',
       type: 'sunglasses'
     },
     {
       id: 2,
       name: 'Cat-Eye Glasses',
-      image: 'https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'src/assets/cateye.jpg',
       price: '$39.99',
-      type: 'glasses'
+      type: 'sunglasses'
     },
     {
       id: 3,
       name: 'Blue Sunglasses',
       image: 'https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&w=400',
       price: '$9.99',
-      type: 'glasses'
+      type: 'sunglasses'
     }
   ]
 
+  
   return (
     <div className="overlay">
       <div className="overlay-content">

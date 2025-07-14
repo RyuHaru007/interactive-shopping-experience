@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import * as faceapi from 'face-api.js'
 import './CameraOverlay.css'
+import { use } from 'react';
 // This determines how wide the glasses are relative to the eye distance.
 const GLASSES_WIDTH_SCALE = 2.5; 
 // This allows you to shift the glasses up or down. Negative values move it up.
@@ -23,14 +24,17 @@ const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart,try
     }
 
     loadModels()
+  }, [])
+  useEffect(() => {
     const img = new Image()
-      img.src = '/src/assets/sunglasses.png' 
+      img.src = selectedItem?.tryNowImage || '/src/assets/sunglasses.png'
       img.onload = () => setGlassesImage(img)
       img.onerror = () => {
         console.error("Failed to load glasses image:");
         setGlassesImage(null); 
       }
-  }, [])
+      console.log("Glasses image loaded:", img.src,selectedItem);
+  },[selectedItem]);
 
   useEffect(() => {
     const startCamera = async () => {
@@ -219,7 +223,7 @@ const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart,try
             🛒 Add to Cart
           </button>
           <button className="action-btn checkout-btn" onClick={handleAddToCart}>
-            💳 Checkout
+            💳  1 - Click Pay
           </button>
           <button className="action-btn wishlist-btn" onClick={handleAddToWishlist}>
             ❤️ Add to Wishlist
