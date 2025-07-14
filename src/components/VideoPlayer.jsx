@@ -218,6 +218,7 @@ const VideoPlayer = () => {
           onClose={() => setShowCameraOverlay(false)}
           onAddToWishlist={addToWishlist}
           onAddToCart={addToCart}
+          tryNow={setShowTryNowOverlay}
         />
       )}
 

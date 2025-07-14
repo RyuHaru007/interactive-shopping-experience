@@ -5,7 +5,7 @@ import './CameraOverlay.css'
 const GLASSES_WIDTH_SCALE = 2.5; 
 // This allows you to shift the glasses up or down. Negative values move it up.
 const GLASSES_Y_OFFSET = -5; 
-const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart }) => {
+const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart,tryNow }) => {
   const videoRef = useRef(null)
   const canvasRef = useRef(null)
   const [isModelLoaded, setIsModelLoaded] = useState(false)
@@ -180,10 +180,16 @@ const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart }) 
     alert('Added to wishlist!')
   }
 
+  const handleBackButton = () => {
+    onClose();
+    tryNow(true); // Trigger the Try Now overlay
+  }
+
   return (
     <div className="camera-overlay">
       <div className="camera-content">
         <div className="camera-header">
+          <button onClick={handleBackButton}>{"Back"}</button>
           <h2>Try On: {selectedItem?.name}</h2>
           <button className="camera-close" onClick={onClose}>×</button>
         </div>

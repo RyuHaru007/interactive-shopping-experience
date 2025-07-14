@@ -30,6 +30,13 @@
   align-items: center;
   margin-bottom: 30px;
 }
+.overlay-subheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
 
 .overlay-header h2 {
   color: #fff;
