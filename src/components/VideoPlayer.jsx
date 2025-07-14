@@ -21,7 +21,7 @@ const VideoPlayer = () => {
   const [hasTriggeredPopup, setHasTriggeredPopup] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
   
-  const triggerTime = 10 // Show popup at 10 seconds
+  const triggerTime = 24 // Show popup at 10 seconds
 
   useEffect(() => {
     const video = videoRef.current
@@ -142,7 +142,7 @@ const VideoPlayer = () => {
           className="video-element"
           preload="metadata"
         >
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          <source src="src/assets/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         
