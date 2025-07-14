@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import * as faceapi from 'face-api.js'
+import CheckoutDialog from './CheckoutDialog'
 import './CameraOverlay.css'
 import { use } from 'react';
 // This determines how wide the glasses are relative to the eye distance.
@@ -12,6 +13,7 @@ const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart,try
   const [isModelLoaded, setIsModelLoaded] = useState(false)
   const [isDetecting, setIsDetecting] = useState(false);
   const [glassesImage, setGlassesImage] = useState(null)
+  const [showCheckoutDialog, setShowCheckoutDialog] = useState(false)
   useEffect(() => {
     const loadModels = async () => {
       try {
@@ -175,8 +177,7 @@ const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart,try
   }, [isModelLoaded, selectedItem])
 
   const handleAddToCart = () => {
-    onAddToCart(selectedItem)
-    alert('Added to cart!')
+    setShowCheckoutDialog(true)
   }
 
   const handleAddToWishlist = () => {
@@ -235,6 +236,10 @@ const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart,try
           <p className="item-price">{selectedItem?.price}</p>
         </div>
       </div>
+      
+      {showCheckoutDialog && (
+        <CheckoutDialog onClose={() => setShowCheckoutDialog(false)} />
+      )}
     </div>
   )
 }
