@@ -16,6 +16,43 @@
   text-align: center;
 }
 
+.brand-logos {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 1;
+}
+
+.cognizant-logo {
+  filter: brightness(0) invert(1);
+}
+
+.comcast-logo {
+  filter: brightness(0) invert(1);
+}
+
+/* Hide logos in fullscreen mode */
+.video-player-container:fullscreen ~ .brand-logos {
+  display: none;
+}
+
 .hero-section {
   margin-bottom: 20px;
   text-align: center;

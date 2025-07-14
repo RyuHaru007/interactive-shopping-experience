@@ -5,6 +5,19 @@ import './App.css'
 function App() {
   return (
     <div className="App">
+      <div className="brand-logos">
+        <img 
+          src="https://logos-world.net/wp-content/uploads/2021/02/Cognizant-Logo.png" 
+          alt="Cognizant" 
+          className="logo cognizant-logo"
+        />
+        <img 
+          src="https://logos-world.net/wp-content/uploads/2020/06/Comcast-Logo.png" 
+          alt="Comcast" 
+          className="logo comcast-logo"
+        />
+      </div>
+      
       <div className="app-content">
         <div className="hero-section">
           <h1 className="hero-title">Interactive Shopping Experience</h1>
