@@ -1,13 +1,16 @@
 import { useRef, useEffect, useState } from 'react'
 import * as faceapi from 'face-api.js'
 import './CameraOverlay.css'
-
+// This determines how wide the glasses are relative to the eye distance.
+const GLASSES_WIDTH_SCALE = 2.5; 
+// This allows you to shift the glasses up or down. Negative values move it up.
+const GLASSES_Y_OFFSET = -5; 
 const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart }) => {
   const videoRef = useRef(null)
   const canvasRef = useRef(null)
   const [isModelLoaded, setIsModelLoaded] = useState(false)
-  const [isDetecting, setIsDetecting] = useState(false)
-
+  const [isDetecting, setIsDetecting] = useState(false);
+  const [glassesImage, setGlassesImage] = useState(null)
   useEffect(() => {
     const loadModels = async () => {
       try {
@@ -20,6 +23,13 @@ const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart }) 
     }
 
     loadModels()
+    const img = new Image()
+      img.src = '/src/assets/sunglasses.png' 
+      img.onload = () => setGlassesImage(img)
+      img.onerror = () => {
+        console.error("Failed to load glasses image:");
+        setGlassesImage(null); 
+      }
   }, [])
 
   useEffect(() => {
@@ -94,35 +104,60 @@ const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart }) 
                 rightEyeCenter.x - leftEyeCenter.x
               )
 
-              // Draw glasses
-              ctx.save()
-              ctx.translate(leftEyeCenter.x, leftEyeCenter.y - 10)
+               const midPoint = {
+                x: (leftEyeCenter.x + rightEyeCenter.x) / 2,
+                y: (leftEyeCenter.y + rightEyeCenter.y) / 2
+              }
+
+              const glassesWidth = eyeDistance * GLASSES_WIDTH_SCALE
+              const glassesHeight = glassesWidth * (glassesImage.naturalHeight / glassesImage.naturalWidth)
+
+               ctx.save()
+              // 3. Translate the canvas context to the midpoint between the eyes
+              ctx.translate(midPoint.x, midPoint.y + GLASSES_Y_OFFSET)
+              // 4. Rotate the context to match the angle of the head tilt
               ctx.rotate(angle)
               
-              // Draw sunglasses frame
-              ctx.strokeStyle = '#2a2a2a'
-              ctx.lineWidth = 3
-              ctx.fillStyle = 'rgba(0, 0, 0, 0.6)'
-              
-              // Left lens
-              ctx.beginPath()
-              ctx.ellipse(-eyeDistance * 0.15, 0, eyeDistance * 0.25, eyeDistance * 0.15, 0, 0, 2 * Math.PI)
-              ctx.fill()
-              ctx.stroke()
-              
-              // Right lens
-              ctx.beginPath()
-              ctx.ellipse(eyeDistance * 0.65, 0, eyeDistance * 0.25, eyeDistance * 0.15, 0, 0, 2 * Math.PI)
-              ctx.fill()
-              ctx.stroke()
-              
-              // Bridge
-              ctx.beginPath()
-              ctx.moveTo(eyeDistance * 0.1, 0)
-              ctx.lineTo(eyeDistance * 0.4, 0)
-              ctx.stroke()
+              // 5. Draw the image. We draw it centered on the new (0,0) of our translated/rotated context.
+              ctx.drawImage(
+                glassesImage,
+                -glassesWidth / 2, // Draw from top-left, so shift left by half the width
+                -glassesHeight / 2, // Shift up by half the height
+                glassesWidth,
+                glassesHeight
+              )
               
               ctx.restore()
+
+              // // Draw glasses
+              // ctx.save()
+              // ctx.translate(leftEyeCenter.x, leftEyeCenter.y - 10)
+              // ctx.rotate(angle)
+              
+              // // Draw sunglasses frame
+              // ctx.strokeStyle = '#2a2a2a'
+              // ctx.lineWidth = 3
+              // ctx.fillStyle = 'rgba(0, 0, 0, 0.6)'
+              
+              // // Left lens
+              // ctx.beginPath()
+              // ctx.ellipse(-eyeDistance * 0.15, 0, eyeDistance * 0.25, eyeDistance * 0.15, 0, 0, 2 * Math.PI)
+              // ctx.fill()
+              // ctx.stroke()
+              
+              // // Right lens
+              // ctx.beginPath()
+              // ctx.ellipse(eyeDistance * 0.65, 0, eyeDistance * 0.25, eyeDistance * 0.15, 0, 0, 2 * Math.PI)
+              // ctx.fill()
+              // ctx.stroke()
+              
+              // // Bridge
+              // ctx.beginPath()
+              // ctx.moveTo(eyeDistance * 0.1, 0)
+              // ctx.lineTo(eyeDistance * 0.4, 0)
+              // ctx.stroke()
+              
+              // ctx.restore()
             }
           })
         }
