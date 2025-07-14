@@ -142,7 +142,7 @@ const VideoPlayer = () => {
           className="video-element"
           preload="metadata"
         >
-          <source src="src/assets/video.mp4" type="video/mp4" />
+          <source src="assets/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         

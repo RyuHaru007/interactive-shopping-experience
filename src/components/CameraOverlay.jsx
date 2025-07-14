@@ -29,7 +29,7 @@ const CameraOverlay = ({ selectedItem, onClose, onAddToWishlist, onAddToCart,try
   }, [])
   useEffect(() => {
     const img = new Image()
-      img.src = selectedItem?.tryNowImage || '/src/assets/sunglasses.png'
+      img.src = selectedItem?.tryNowImage || 'assets/sunglasses.png'
       img.onload = () => setGlassesImage(img)
       img.onerror = () => {
         console.error("Failed to load glasses image:");
