@@ -7,14 +7,14 @@ function App() {
     <div className="App">
       <div className="brand-logos">
         <img 
-          src="https://logos-world.net/wp-content/uploads/2021/02/Cognizant-Logo.png" 
-          alt="Cognizant" 
-          className="logo cognizant-logo"
-        />
-        <img 
-          src="https://logos-world.net/wp-content/uploads/2020/06/Comcast-Logo.png" 
+          src="src/assets/comcast.png" 
           alt="Comcast" 
           className="logo comcast-logo"
+        />
+        <img 
+          src="src/assets/cognizant.png" 
+          alt="Cognizant" 
+          className="logo cognizant-logo"
         />
       </div>
       

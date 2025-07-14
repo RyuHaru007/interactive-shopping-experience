@@ -29,7 +29,6 @@
 }
 
 .logo {
-  height: 40px;
   width: auto;
   object-fit: contain;
   opacity: 0.8;
@@ -42,10 +41,14 @@
 
 .cognizant-logo {
   filter: brightness(0) invert(1);
+  height: 40px;
+
 }
 
 .comcast-logo {
   filter: brightness(0) invert(1);
+  height: 80px;
+
 }
 
 /* Hide logos in fullscreen mode */
