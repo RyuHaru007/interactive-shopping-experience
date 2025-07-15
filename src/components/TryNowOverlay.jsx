@@ -12,8 +12,8 @@ const TryNowOverlay = ({ onClose, onItemSelect }) => {
     },
     {
       id: 2,
-      name: 'Vintage Round Glasses',
-      image: 'https://images.pexels.com/photos/701877/pexels-photo-701877.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'Oakley Wind Jacket',
+      image: 'assets/oakleydisplay.jpeg',
       tryNowImage: 'assets/oakley.png',
       price: '$69.99',
       type: 'sunglasses'
@@ -24,7 +24,7 @@ const TryNowOverlay = ({ onClose, onItemSelect }) => {
       id: 1,
       name: 'Aviator Sunglasses',
       image: 'https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&w=400',
-      tryNowImage: 'assets/roundglasses.png',
+      tryNowImage: 'assets/aviator.png',
       price: '$189.99',
       type: 'sunglasses'
     },
@@ -32,16 +32,16 @@ const TryNowOverlay = ({ onClose, onItemSelect }) => {
       id: 2,
       name: 'Cat-Eye Glasses',
       image: 'assets/cateye.jpg',
-      tryNowImage: 'assets/sunglasses.png',
+      tryNowImage: 'assets/cateye.png',
       price: '$39.99',
       type: 'sunglasses'
     },
     {
       id: 3,
-      name: 'Blue Sunglasses',
-      image: 'https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'Vintage Round Glasses',
+      image: 'https://images.pexels.com/photos/701877/pexels-photo-701877.jpeg?auto=compress&cs=tinysrgb&w=400',
       price: '$9.99',
-      tryNowImage: 'assets/sunglasses.png',
+      tryNowImage: 'assets/roundglasses.png',
       type: 'sunglasses'
     }
   ]
