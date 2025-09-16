@@ -7,11 +7,6 @@ function App() {
     <div className="App">
       <div className="brand-logos">
         <img 
-          src="assets/comcast.png" 
-          alt="Comcast" 
-          className="logo comcast-logo"
-        />
-        <img 
           src="assets/cognizant.png" 
           alt="Cognizant" 
           className="logo cognizant-logo"
