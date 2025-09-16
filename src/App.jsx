@@ -5,9 +5,6 @@ import './App.css'
 function App() {
   return (
     <div className="App">
-      <div className="brand-logos">
-      </div>
-      
       <div className="app-content">
         <div className="hero-section">
           <h1 className="hero-title">Interactive Shopping Experience</h1>
