@@ -6,11 +6,6 @@ function App() {
   return (
     <div className="App">
       <div className="brand-logos">
-        <img 
-          src="assets/cognizant.png" 
-          alt="Cognizant" 
-          className="logo cognizant-logo"
-        />
       </div>
       
       <div className="app-content">
